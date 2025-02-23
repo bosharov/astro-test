@@ -1,9 +1,5 @@
 ---
-import "../styles/global.css";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-
-const pageTitle = "About Me";
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const identity = {
 	firstName: "Andrew",
@@ -20,28 +16,19 @@ const goal = 3;
 
 const skillColor = "navy";
 ---
+	<style define:vars={{ skillColor }}>
+		h1 {
+			color: purple;
+			font-size: 4rem;
+		}
+		.skill {
+			color: green;
+			color: var(--skillColor);
+			font-weight: bold;
+		}
+	</style>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>{pageTitle}</title>
-		<style define:vars={{ skillColor }}>
-			h1 {
-				color: purple;
-				font-size: 4rem;
-			}
-			.skill {
-				color: green;
-				color: var(--skillColor);
-				font-weight: bold;
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-
-		<h1>{pageTitle}</h1>
+	<BaseLayout pageTitle='About Me'>
 		<h2>... and my new Astro site!</h2>
 
 		<p>
@@ -88,9 +75,4 @@ const skillColor = "navy";
 			)
 		}
 
-		<Footer />
-		<script>
-			import "../scripts/menu.js";
-		</script>
-	</body>
-</html>
+	</BaseLayout>
